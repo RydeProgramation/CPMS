@@ -19,33 +19,9 @@ namespace Encodeur
 	/// Encodes the input string and stores the result in the output string.
 	/// </summary>
 	/// <param name="input"> Input </param>
-	/// <param name="output"> Output </param>
-	/// <returns></returns>
-	void Encode(const char* input, const size_t sizeof_input, Data& output);
-
-	/// <summary>
-	/// Encodes the input string and stores the result in the output string.
-	/// </summary>
-	/// <param name="input"> Input </param>
-	/// <param name="output"> Output </param>
+	/// <param name="sizeof_input"> Size of the input string </param>
 	/// <returns></returns>
 	ENCODEUR_API const Data Encode(const char* input, const size_t sizeof_input);
-
-	/// <summary>
-	/// Encodes the input string and stores the result in the output string.
-	/// </summary>
-	/// <param name="input"> Input </param>
-	/// <param name="output"> Output </param>
-	/// <returns></returns>
-	const Data Encode(const Data Input);
-
-	/// <summary>
-	/// Dedodes the input string and stores the result in the output string.
-	/// </summary>
-	/// <param name="input"> Input </param>
-	/// <param name="output"> Output </param>
-	/// <returns></returns>
-	void Decode(const char* input, const size_t sizeof_input, std::string& output);
 
 	/// <summary>
 	/// Decodes the input string and stores the result in the output string.
@@ -53,15 +29,7 @@ namespace Encodeur
 	/// <param name="input"> Input </param>
 	/// <param name="output"> Output </param>
 	/// <returns></returns>
-	const Data Decode(const char* input, const size_t sizeof_input);
-
-	/// <summary>
-	/// Encodes the input string and stores the result in the output string.
-	/// </summary>
-	/// <param name="input"> Input </param>
-	/// <param name="output"> Output </param>
-	/// <returns></returns>
-	const Data Decode(const Data Input);
+	ENCODEUR_API const Data Decode(const char* input, const size_t sizeof_input);
 }
 
 #define __ENCODEUR__

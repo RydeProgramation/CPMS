@@ -14,7 +14,7 @@
 
 namespace InternalFactory
 {
-	FACTORY_API void FreeBuffer();
+	extern "C" FACTORY_API void FreeBuffer();
 	FACTORY_API void CreateValue(const void* ptr, const size_t sizeOf);
 	FACTORY_API void DestroyValue(const void* ptr, const size_t sizeOf);
 
