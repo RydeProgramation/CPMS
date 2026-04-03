@@ -40,5 +40,4 @@ on peut aller encore plus loin et voir si on peut pas transformer ça en crate r
 # Network 
 
 tcp socket
-et pour l'instant je sais pas vraiment encore comment proceder donc on vera
 
