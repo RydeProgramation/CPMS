@@ -4,16 +4,36 @@
 
 using namespace std;
 using namespace Encodeur;
-
-struct Base {
-	virtual void foo() {}
-};
+using namespace InternalFactory;
 
 int main()
 {
 	string* str = new string("Hello World!");
-	std::cout << Encode(str->c_str(), str->size()) << std::endl;
+	Data test = Encode(str->c_str(), str->size());
 	delete str;
+	
+
+	/////
+
+	char* Test = new char[test.size];
+	std::memcpy(Test, test.ptr, test.size);
+
+	for (uint64_t i = 0; i < test.size; i++) {
+		std::cout << Test[i];
+	}
+	std::cout << std::endl;
+	delete[] Test;
+
+	FreeBuffer();
+
+	Test = new char[test.size];
+	std::memcpy(Test, test.ptr, test.size);
+
+	for (uint64_t i = 0; i < test.size; i++) {
+		std::cout << Test[i];
+	}
+	std::cout << std::endl;
+	delete[] Test;
 
 	std::cin.ignore();
 }

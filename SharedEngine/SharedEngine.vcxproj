@@ -20,10 +20,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Encodeur.cpp" />
+    <ClCompile Include="InternalFactory.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Encodeur.hpp" />
     <ClInclude Include="framework.h" />
+    <ClInclude Include="InternalFactory.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

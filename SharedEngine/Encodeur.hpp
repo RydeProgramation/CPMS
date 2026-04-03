@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 #include "framework.h"
+#include "InternalFactory.hpp"
 
 #define ENCODEUR_VERSION "1.0.0"
 
@@ -20,7 +21,7 @@ namespace Encodeur
 	/// <param name="input"> Input </param>
 	/// <param name="output"> Output </param>
 	/// <returns></returns>
-	ENCODEUR_API void Encode(const char* input, const size_t sizeof_input, std::string& output);
+	void Encode(const char* input, const size_t sizeof_input, Data& output);
 
 	/// <summary>
 	/// Encodes the input string and stores the result in the output string.
@@ -28,7 +29,15 @@ namespace Encodeur
 	/// <param name="input"> Input </param>
 	/// <param name="output"> Output </param>
 	/// <returns></returns>
-	std::string Encode(const char* input, const size_t sizeof_input);
+	ENCODEUR_API const Data Encode(const char* input, const size_t sizeof_input);
+
+	/// <summary>
+	/// Encodes the input string and stores the result in the output string.
+	/// </summary>
+	/// <param name="input"> Input </param>
+	/// <param name="output"> Output </param>
+	/// <returns></returns>
+	const Data Encode(const Data Input);
 
 	/// <summary>
 	/// Dedodes the input string and stores the result in the output string.
@@ -36,7 +45,7 @@ namespace Encodeur
 	/// <param name="input"> Input </param>
 	/// <param name="output"> Output </param>
 	/// <returns></returns>
-	ENCODEUR_API void Decode(const char* input, const size_t sizeof_input, std::string& output);
+	void Decode(const char* input, const size_t sizeof_input, std::string& output);
 
 	/// <summary>
 	/// Decodes the input string and stores the result in the output string.
@@ -44,7 +53,15 @@ namespace Encodeur
 	/// <param name="input"> Input </param>
 	/// <param name="output"> Output </param>
 	/// <returns></returns>
-	std::string Decode(const char* input, const size_t sizeof_input);
+	const Data Decode(const char* input, const size_t sizeof_input);
+
+	/// <summary>
+	/// Encodes the input string and stores the result in the output string.
+	/// </summary>
+	/// <param name="input"> Input </param>
+	/// <param name="output"> Output </param>
+	/// <returns></returns>
+	const Data Decode(const Data Input);
 }
 
 #define __ENCODEUR__

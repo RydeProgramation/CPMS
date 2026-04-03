@@ -18,12 +18,18 @@
     <ClCompile Include="Encodeur.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="InternalFactory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Encodeur.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="framework.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="InternalFactory.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
