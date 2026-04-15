@@ -19,7 +19,8 @@
 	void InternalFactory::DestroyValue(const void* ptr, const size_t sizeOf)
 	{
 		auto it = Pointers.find(const_cast<void*>(ptr));
-		if (it != Pointers.end()) {
+		if (it != Pointers.end()) 
+		{
 			delete[sizeOf] static_cast<char*>(it->second.ptr);
 			Pointers.erase(it);
 		}

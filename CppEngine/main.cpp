@@ -10,9 +10,9 @@ int main()
 {
 	string* str = new string("Hello World!");
 	Data test = Encode(str->c_str(), str->size());
+	Data test2 = Decode(static_cast<const char*>(test.ptr), test.size);
 	delete str;
 	
-
 	/////
 
 	char* Test = new char[test.size];
@@ -22,6 +22,13 @@ int main()
 		std::cout << Test[i];
 	}
 	std::cout << std::endl;
+
+	for (uint64_t i = 0; i < test2.size; i++) {
+		std::cout << static_cast<char*>(test2.ptr)[i];
+	}
+
+	std::cout << std::endl;
+
 	delete[] Test;
 
 	FreeBuffer();

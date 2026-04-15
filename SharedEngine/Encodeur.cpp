@@ -36,5 +36,24 @@ const Data Encodeur::Encode(const char* input, const size_t sizeof_input)
 
 const Data Encodeur::Decode(const char* input, const size_t sizeof_input)
 {
-	return Data{ 0, nullptr };
+	string temp(input, sizeof_input);
+
+	// Vérification de la validité de l'entrée
+	if (temp.size() < 4 || temp[0] != 'M' || temp[1] != 'S' || temp[2] != 1 || temp[3] != 1) {
+		cerr << "Invalid input format" << endl;
+		return Data{ 0, nullptr };
+	}
+
+	// Extraction des données après l'en-tête
+	string decoded = temp.substr(4);
+
+	// allocate a heap buffer, copy the data and add a null terminator
+	char* Reslt = new char[decoded.size() + 1]; /////// ATTENTUION, IL FAUT PENSER A LIBERER CETTE MEMOIRE APRES UTILISATION
+	CreateValue(Reslt, decoded.size() + 1);
+	std::memcpy(Reslt, decoded.data(), decoded.size());
+	Reslt[decoded.size()] = '\0';
+	Data result;
+	result.size = decoded.size();
+	result.ptr = static_cast<void*>(Reslt);
+	return result;
 }
