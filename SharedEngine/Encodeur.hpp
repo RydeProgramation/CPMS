@@ -30,6 +30,8 @@ namespace Encodeur
 	/// <param name="output"> Output </param>
 	/// <returns></returns>
 	ENCODEUR_API const Data Decode(const char* input, const size_t sizeof_input);
+
+	ENCODEUR_API const Data JCS32(const char* input, const size_t sizeof_input);
 }
 
 #define __ENCODEUR__
