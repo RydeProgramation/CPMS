@@ -1,5 +1,8 @@
 ﻿#include <iostream>
 #include "Encodeur.hpp"
+#include <cassert>  // à inclure
+#include <bitset>
+
 
 using namespace std;
 using namespace InternalFactory;
@@ -22,6 +25,8 @@ const Data Encodeur::Encode(const char* input, const size_t sizeof_input)
 	temp.append(input, sizeof_input);
 
 	Data checksum = JCS32(temp.data(), temp.size());
+
+	std::cout << "bites : " << std::bitset<64>((uint64_t)checksum.ptr) << std::endl;
 
 	temp.append(static_cast<const char*>(checksum.ptr), checksum.size);
 
@@ -75,15 +80,15 @@ const Data Encodeur::JCS32(const char* input, const size_t sizeof_input)
 	}
 
 	// tableau de bits compact
-	uint8_t* Step2 = new uint8_t[4];
-	std::memset(Step2, 0, 4);
+	uint8_t* Step2 = new uint8_t[5]; // CLAUDE A DIT DE FAIRE ÇA POUR LA LECTURE DU DEBBUGGER C'EST LACHE DE FAIRE ÇA MAIS HASSOUL
+	std::memset(Step2, 0, 5);
 
 	for (int i = 0, j = 0; i < 64; i += 2, j++)
 	{
 		int bit = (step1 >> i) & 1;
 
-		if (bit)
-			Step2[j / 8] |= (1 << (j % 8));
+		if (bit) // ignorer
+			Step2[j / 8] |= (1 << (j % 8)); //// PROBELEME DE MERDE À 3
 	}
 
 	for (int i = 0; i < 31; i++)
@@ -104,8 +109,23 @@ const Data Encodeur::JCS32(const char* input, const size_t sizeof_input)
 		}
 	}
 
-	uint8_t* Step3 = new uint8_t[8];
+	uint8_t* Step3 = new uint8_t[9];
 	std::memcpy(Step3, Step2, 4);
+
+	uint32_t v2 = 0;
+	uint64_t v3 = 0;
+
+	/////////////// A ENELVER
+
+	std::memcpy(&v2, Step2, 4);
+
+	std::cout << std::bitset<32>(v2) << '\n';
+
+	std::memcpy(&v3, Step3, 8);
+
+	std::cout << std::bitset<64>(v3) << '\n';
+
+	/////////////// A ENELVER
 
 	for (int i = 0; i < 32; i++)
 	{
@@ -120,6 +140,18 @@ const Data Encodeur::JCS32(const char* input, const size_t sizeof_input)
 	char* Reslt = new char[8]; /////// ATTENTUION, IL FAUT PENSER A LIBERER CETTE MEMOIRE APRES UTILISATION
 
 	std::memcpy(Reslt, Step3, 8);
+
+	/////////////// A ENELVER
+
+	std::memcpy(&v2, Step2, 4);
+
+	std::cout << std::bitset<32>(v2) << '\n';
+
+	std::memcpy(&v3, Step3, 8);
+
+	std::cout << std::bitset<64>(v3) << '\n';
+
+	/////////////// A ENELVER
 
 	Data result;
 

@@ -15,7 +15,7 @@ int main()
 	Data test2 = Decode(static_cast<const char*>(test.ptr), test.size);
 
 
-	std::cout << std::bitset<64>((uint64_t)test.ptr) << std::endl;
+	// std::cout << std::bitset<64>((uint64_t)test.ptr) << std::endl;
 
 	std::cin.ignore();
 	
