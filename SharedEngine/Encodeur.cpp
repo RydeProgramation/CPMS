@@ -26,11 +26,8 @@ const Data Encodeur::Encode(const char* input, const size_t sizeof_input)
 
 	Data checksum = JCS32(temp.data(), temp.size());
 
-	std::cout << "bites : " << std::bitset<64>((uint64_t)checksum.ptr) << std::endl;
-
 	temp.append(static_cast<const char*>(checksum.ptr), checksum.size);
 
-	// allocate a heap buffer, copy the data and add a null terminator
 	char* Reslt = new char[temp.size() + 1]; /////// ATTENTUION, IL FAUT PENSER A LIBERER CETTE MEMOIRE APRES UTILISATION
 	CreateValue(Reslt, temp.size() + 1);
 	std::memcpy(Reslt, temp.data(), temp.size());
@@ -115,17 +112,19 @@ const Data Encodeur::JCS32(const char* input, const size_t sizeof_input)
 	uint32_t v2 = 0;
 	uint64_t v3 = 0;
 
-	/////////////// A ENELVER
+	{
+		/////////////// A ENELVER 
 
-	std::memcpy(&v2, Step2, 4);
+		std::memcpy(&v2, Step2, 4);
 
-	std::cout << std::bitset<32>(v2) << '\n';
+		// std::cout << std::bitset<32>(v2) << '\n';
 
-	std::memcpy(&v3, Step3, 8);
+		std::memcpy(&v3, Step3, 8);
 
-	std::cout << std::bitset<64>(v3) << '\n';
+		// std::cout << std::bitset<64>(v3) << '\n';
 
-	/////////////// A ENELVER
+		/////////////// A ENELVER - fin
+	}
 
 	for (int i = 0; i < 32; i++)
 	{
@@ -141,17 +140,19 @@ const Data Encodeur::JCS32(const char* input, const size_t sizeof_input)
 
 	std::memcpy(Reslt, Step3, 8);
 
-	/////////////// A ENELVER
+	{
+		/////////////// A ENELVER 
 
-	std::memcpy(&v2, Step2, 4);
+		std::memcpy(&v2, Step2, 4);
 
-	std::cout << std::bitset<32>(v2) << '\n';
+		// std::cout << std::bitset<32>(v2) << '\n';
 
-	std::memcpy(&v3, Step3, 8);
+		std::memcpy(&v3, Step3, 8);
 
-	std::cout << std::bitset<64>(v3) << '\n';
+		// std::cout << std::bitset<64>(v3) << '\n';
 
-	/////////////// A ENELVER
+		/////////////// A ENELVER - fin
+	}
 
 	Data result;
 
